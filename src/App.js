@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './pages/Home';
+import Navbar from './pages/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import Users from './pages/user/Users';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AddUser from './pages/user/AddUser';
+import EditUser from './pages/user/EditUser';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Navbar/>
+      <Routes>
+        <Route path="/" exact element={<Home/>} />
+        <Route path="/users/:id" exact element={<Users/>} />
+        <Route path="/add-user" exact element={<AddUser/>} />
+        <Route path="/edit-user/:id" exact element={<EditUser/>} />
+      </Routes>
+
+      {/* Toastify */}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
+  )
 }
 
 export default App;
